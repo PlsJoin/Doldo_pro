@@ -4,23 +4,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DOLDOのプロフィールサイト">
-<title>DOLDO | プロフィール</title>
+<meta name="description" content="DOLDOのプロフィールと活動紹介">
+<title>DOLDO | Profile</title>
 
 <style>
+:root {
+    --blue: #4b9bd3;
+    --blue-light: #edf6fc;
+    --text: #283744;
+    --sub: #788895;
+    --line: #e8eef2;
+    --white: #ffffff;
+    --bg: #f8fafc;
+}
+
 * {
     box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 85px;
 }
 
 body {
     margin: 0;
-    background: #ffffff;
-    color: #252d35;
-    font-family: "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+    color: var(--text);
+    background: var(--white);
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
     line-height: 1.8;
 }
 
@@ -29,184 +40,380 @@ a {
     text-decoration: none;
 }
 
+.container {
+    width: min(1080px, calc(100% - 48px));
+    margin: auto;
+}
+
+/* ヘッダー */
+
 header {
-    height: 65px;
-    border-bottom: 1px solid #e5edf3;
-    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    height: 72px;
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--line);
 }
 
 .header-inner {
-    max-width: 1000px;
     height: 100%;
-    margin: auto;
-    padding: 0 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
-    color: #258bd8;
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 800;
     letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--blue);
 }
 
 nav {
     display: flex;
-    gap: 22px;
-    font-size: 13px;
+    align-items: center;
+    gap: 27px;
 }
 
 nav a {
-    color: #52616e;
+    font-size: 12px;
+    color: var(--sub);
+    transition: color .2s;
 }
 
 nav a:hover {
-    color: #258bd8;
+    color: var(--blue);
 }
 
 .menu-button {
     display: none;
-    border: 1px solid #dce8f0;
     background: white;
-    padding: 7px 12px;
+    border: 1px solid var(--line);
     border-radius: 5px;
+    padding: 7px 12px;
+    color: var(--text);
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 0 20px;
-}
+/* メイン */
 
 .hero {
-    padding-top: 105px;
-    padding-bottom: 105px;
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    padding: 75px 0;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-small {
+    display: inline-block;
+    padding: 4px 11px;
+    color: var(--blue);
+    background: var(--blue-light);
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .hero h1 {
-    margin: 0;
-    font-size: 58px;
+    margin: 19px 0 5px;
+    font-size: clamp(55px, 8vw, 82px);
+    font-weight: 800;
     letter-spacing: 2px;
+    line-height: 1.2;
 }
 
 .hero h1 span {
-    color: #258bd8;
+    color: var(--blue);
 }
 
-.hero p {
-    color: #687887;
-    font-size: 15px;
-    margin-top: 12px;
+.hero-subtitle {
+    margin: 13px 0;
+    font-size: 17px;
+    font-weight: 600;
 }
 
-.hero-button {
+.hero-description {
+    max-width: 540px;
+    color: var(--sub);
+    font-size: 14px;
+}
+
+.hero-link {
     display: inline-block;
     margin-top: 18px;
-    padding: 9px 20px;
-    background: #258bd8;
+    padding: 10px 20px;
+    background: var(--blue);
     color: white;
-    border-radius: 5px;
+    border-radius: 4px;
     font-size: 13px;
+    transition: background .2s;
 }
+
+.hero-link:hover {
+    background: #3284bf;
+}
+
+/* 共通セクション */
 
 section {
-    padding: 65px 0;
-    border-top: 1px solid #edf1f4;
+    padding: 76px 0;
+    border-top: 1px solid var(--line);
 }
 
-section:nth-child(even) {
-    background: #f7fbfe;
+.section-heading {
+    margin-bottom: 32px;
 }
 
-.section-title {
-    margin-bottom: 28px;
-}
-
-.section-title h2 {
+.section-heading h2 {
     margin: 0;
-    font-size: 25px;
+    font-size: 27px;
+    font-weight: 700;
 }
 
-.section-title p {
-    margin: 4px 0 0;
-    color: #8996a1;
+.section-heading p {
+    margin: 5px 0 0;
+    color: var(--sub);
     font-size: 12px;
 }
 
-.about-text {
-    max-width: 720px;
-    font-size: 14px;
-    color: #52616e;
-}
+/* プロフィール */
 
-.profile-table {
-    max-width: 700px;
-    margin-top: 25px;
-    border-top: 1px solid #e2eaf0;
-}
-
-.profile-row {
+.about-layout {
     display: grid;
-    grid-template-columns: 130px 1fr;
-    padding: 12px 5px;
-    border-bottom: 1px solid #e2eaf0;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 65px;
+}
+
+.about-description {
+    color: #647582;
+    font-size: 14px;
+}
+
+.about-description p {
+    margin: 0 0 15px;
+}
+
+.profile-info {
+    border-top: 1px solid var(--line);
+}
+
+.profile-info div {
+    display: grid;
+    grid-template-columns: 105px 1fr;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
     font-size: 13px;
 }
 
-.profile-row span:first-child {
-    color: #82909c;
+.profile-info span:first-child {
+    color: var(--sub);
 }
 
-.item-list {
-    max-width: 750px;
+/* 活動 */
+
+.activity-section {
+    background: var(--bg);
 }
 
-.item {
-    padding: 17px 5px;
-    border-bottom: 1px solid #e4ebf0;
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
-.item h3 {
+.activity {
+    padding: 23px 25px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    transition: border-color .2s;
+}
+
+.activity:hover {
+    border-color: #b6d8ed;
+}
+
+.activity h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+}
+
+.activity p {
     margin: 0;
-    font-size: 16px;
-}
-
-.item p {
-    margin: 5px 0 0;
-    color: #687887;
+    color: var(--sub);
     font-size: 13px;
 }
 
-.link-list {
+/* プロジェクト */
+
+.project-list {
+    border-top: 1px solid var(--line);
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 25px;
+    padding: 22px 8px;
+    border-bottom: 1px solid var(--line);
+}
+
+.project-name {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.project-description {
+    color: var(--sub);
+    font-size: 13px;
+}
+
+/* 開発 */
+
+.development {
+    background: var(--blue-light);
+}
+
+.development-content {
+    max-width: 720px;
+}
+
+.development-content p {
+    color: #627887;
+    font-size: 14px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.skill {
+    padding: 5px 12px;
+    background: white;
+    border: 1px solid #dcebf5;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #527b98;
+}
+
+/* 経歴 */
+
+.history-list {
+    max-width: 750px;
+    border-left: 2px solid #dcecf7;
+    padding-left: 24px;
+}
+
+.history-item {
+    position: relative;
+    padding: 0 0 25px;
+}
+
+.history-item:last-child {
+    padding-bottom: 0;
+}
+
+.history-item::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: -30px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border: 2px solid var(--blue);
+    border-radius: 50%;
+}
+
+.history-item h3 {
+    margin: 0;
+    font-size: 15px;
+}
+
+.history-item p {
+    margin: 4px 0 0;
+    color: var(--sub);
+    font-size: 13px;
+}
+
+/* リンク */
+
+.links-section {
+    background: var(--bg);
+}
+
+.links {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
 }
 
-.link-list a {
-    display: inline-block;
-    padding: 9px 18px;
-    border: 1px solid #d9e8f3;
-    border-radius: 5px;
-    color: #258bd8;
+.links a {
+    min-width: 150px;
+    padding: 12px 17px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 4px;
     font-size: 13px;
+    transition: border-color .2s;
 }
 
-.link-list a:hover {
-    background: #eaf6ff;
+.links a:hover {
+    border-color: var(--blue);
+    color: var(--blue);
 }
+
+.links span {
+    float: right;
+    color: var(--blue);
+}
+
+.links .disabled {
+    color: #9aa6af;
+    cursor: default;
+}
+
+/* フッター */
 
 footer {
-    padding: 25px 20px;
-    text-align: center;
-    color: #8996a1;
-    font-size: 12px;
-    border-top: 1px solid #e5edf3;
+    padding: 27px 0;
+    border-top: 1px solid var(--line);
 }
 
-@media (max-width: 700px) {
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer small {
+    color: var(--sub);
+    font-size: 11px;
+}
+
+/* スマホ */
+
+@media (max-width: 760px) {
+    .container {
+        width: calc(100% - 36px);
+    }
+
+    header {
+        height: 65px;
+    }
+
     .menu-button {
         display: block;
     }
@@ -214,35 +421,57 @@ footer {
     nav {
         display: none;
         position: absolute;
-        top: 65px;
+        top: 64px;
         left: 0;
-        width: 100%;
+        right: 0;
         padding: 15px 20px;
         background: white;
-        border-bottom: 1px solid #e5edf3;
+        border-bottom: 1px solid var(--line);
         flex-direction: column;
-        gap: 12px;
+        align-items: stretch;
+        gap: 0;
     }
 
     nav.open {
         display: flex;
     }
 
+    nav a {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+    }
+
     .hero {
-        padding-top: 75px;
-        padding-bottom: 75px;
+        min-height: 390px;
+        padding: 65px 0;
     }
 
     .hero h1 {
-        font-size: 45px;
+        font-size: 57px;
     }
 
     section {
-        padding: 48px 0;
+        padding: 55px 0;
     }
 
-    .profile-row {
-        grid-template-columns: 100px 1fr;
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
 </style>
@@ -251,18 +480,17 @@ footer {
 <body>
 
 <header>
-    <div class="header-inner">
-        <a href="#" class="logo">DOLDO</a>
+    <div class="container header-inner">
+        <a href="#" class="logo">DOLDO<span>.</span></a>
 
         <button class="menu-button" id="menuButton">メニュー</button>
 
         <nav id="nav">
             <a href="#about">プロフィール</a>
-            <a href="#minecraft">Minecraft</a>
-            <a href="#gaming">ゲーム</a>
+            <a href="#activities">活動内容</a>
+            <a href="#projects">プロジェクト</a>
             <a href="#development">開発</a>
-            <a href="#server">サーバー</a>
-            <a href="#history">実績・経歴</a>
+            <a href="#history">経歴</a>
             <a href="#links">リンク</a>
         </nav>
     </div>
@@ -272,132 +500,133 @@ footer {
 
 <div class="container">
     <div class="hero">
-        <h1>I'm <span>DOLDO.</span></h1>
-        <p>
-            Minecraftを中心に活動しています。<br>
-            ゲーム、アドオン開発、サーバー運営などを紹介するプロフィールサイトです。
-        </p>
-        <a href="#about" class="hero-button">プロフィールを見る</a>
+        <div class="hero-content">
+            <span class="hero-small">個人プロフィール</span>
+
+            <h1>DOLDO<span>.</span></h1>
+
+            <p class="hero-subtitle">
+                ゲーム・開発・サーバー運営
+            </p>
+
+            <p class="hero-description">
+                Minecraftを中心に活動しています。<br>
+                ゲーム活動やアドオン開発、サーバー運営などを紹介しています。
+            </p>
+
+            <a href="#about" class="hero-link">プロフィールを見る →</a>
+        </div>
     </div>
 </div>
 
 <section id="about">
     <div class="container">
-        <div class="section-title">
+        <div class="section-heading">
             <h2>プロフィール</h2>
             <p>DOLDOについて</p>
         </div>
 
-        <div class="about-text">
-            DOLDOです。Minecraftを中心に、ゲーム活動やアドオン開発、サーバー運営などをしています。
-            ゲームを遊ぶだけでなく、自分で機能やシステムを作ることも好きです。
-        </div>
+        <div class="about-layout">
+            <div class="about-description">
+                <p>
+                    DOLDOです。Minecraftを中心に、ゲーム活動やアドオン開発、サーバー運営などをしています。
+                </p>
+                <p>
+                    ゲームを遊ぶだけでなく、自分でシステムや機能を考えて制作することも好きです。
+                </p>
+            </div>
 
-        <div class="profile-table">
-            <div class="profile-row">
-                <span>名前</span>
-                <span>DOLDO</span>
-            </div>
-            <div class="profile-row">
-                <span>主な活動</span>
-                <span>ゲーム・開発・サーバー運営</span>
-            </div>
-            <div class="profile-row">
-                <span>メインゲーム</span>
-                <span>Minecraft</span>
-            </div>
-            <div class="profile-row">
-                <span>開発環境</span>
-                <span>JavaScript / Minecraft Script API</span>
+            <div class="profile-info">
+                <div><span>名前</span><span>DOLDO</span></div>
+                <div><span>主な活動</span><span>ゲーム・開発・運営</span></div>
+                <div><span>メインゲーム</span><span>Minecraft</span></div>
+                <div><span>開発環境</span><span>JavaScript</span></div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="minecraft">
+<section id="activities" class="activity-section">
     <div class="container">
-        <div class="section-title">
-            <h2>Minecraft</h2>
-            <p>マインクラフトでの活動</p>
+        <div class="section-heading">
+            <h2>活動内容</h2>
+            <p>普段取り組んでいること</p>
         </div>
 
-        <div class="item-list">
-            <div class="item">
-                <h3>統合版（Bedrock Edition）</h3>
-                <p>アドオン制作やサーバー運営、ゲームシステムの開発など。</p>
-            </div>
-
-            <div class="item">
-                <h3>Java版（Java Edition）</h3>
-                <p>マルチプレイやさまざまなサーバーでのゲーム活動。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="gaming">
-    <div class="container">
-        <div class="section-title">
-            <h2>ゲーム活動</h2>
-            <p>プレイしているゲーム</p>
-        </div>
-
-        <div class="item-list">
-            <div class="item">
+        <div class="activity-grid">
+            <div class="activity">
                 <h3>Minecraft</h3>
-                <p>建築、サバイバル、PvP、サーバーでの活動など。</p>
+                <p>統合版・Java版でのプレイやマルチプレイ活動。</p>
             </div>
 
-            <div class="item">
-                <h3>Fortnite</h3>
-                <p>さまざまなゲームモードでプレイしています。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="development">
-    <div class="container">
-        <div class="section-title">
-            <h2>アドオン開発</h2>
-            <p>制作しているもの</p>
-        </div>
-
-        <div class="item-list">
-            <div class="item">
-                <h3>Script API</h3>
-                <p>JavaScriptを使用したMinecraft統合版の機能開発。</p>
+            <div class="activity">
+                <h3>ゲーム活動</h3>
+                <p>Fortniteなど、さまざまなゲームをプレイしています。</p>
             </div>
 
-            <div class="item">
-                <h3>ゲームシステム</h3>
-                <p>ランク、通貨、報酬、PvP、メニューなどの制作。</p>
+            <div class="activity">
+                <h3>アドオン開発</h3>
+                <p>Minecraft統合版向けの機能やシステムを制作しています。</p>
             </div>
 
-            <div class="item">
-                <h3>カスタムUI</h3>
-                <p>フォームやアイテムを利用した独自の操作画面。</p>
+            <div class="activity">
+                <h3>サーバー運営</h3>
+                <p>サーバーの管理や企画、ゲームシステムの開発。</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="server">
+<section id="projects">
     <div class="container">
-        <div class="section-title">
-            <h2>サーバー運営</h2>
-            <p>運営・開発プロジェクト</p>
+        <div class="section-heading">
+            <h2>プロジェクト</h2>
+            <p>関わっているサーバー・制作物</p>
         </div>
 
-        <div class="item-list">
-            <div class="item">
-                <h3>DOLDO SERVER（ドル鯖）</h3>
-                <p>Minecraft統合版の参加型サーバー。運営や企画、システム開発などを行っています。</p>
+        <div class="project-list">
+            <div class="project">
+                <div class="project-name">DOLDO SERVER</div>
+                <div class="project-description">
+                    Minecraft統合版の参加型サーバー。運営や企画、システム開発などを行っています。
+                </div>
             </div>
 
-            <div class="item">
-                <h3>DEEP HOLE</h3>
-                <p>採掘をテーマにしたMinecraftサーバー企画。通貨や採掘システムなどを開発しています。</p>
+            <div class="project">
+                <div class="project-name">DEEP HOLE</div>
+                <div class="project-description">
+                    採掘をテーマにしたMinecraftサーバー企画。採掘や通貨、強化システムなどを制作しています。
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-name">オリジナルアドオン</div>
+                <div class="project-description">
+                    クラフト、PvP、報酬、メニューなどのMinecraft向け機能を開発しています。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="development" class="development">
+    <div class="container">
+        <div class="section-heading">
+            <h2>開発について</h2>
+            <p>使用技術・制作分野</p>
+        </div>
+
+        <div class="development-content">
+            <p>
+                Minecraft Bedrock EditionのScript APIを利用して、ゲーム内のシステムや独自機能を制作しています。
+            </p>
+
+            <div class="skills">
+                <span class="skill">JavaScript</span>
+                <span class="skill">Minecraft Script API</span>
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JSON</span>
             </div>
         </div>
     </div>
@@ -405,41 +634,41 @@ footer {
 
 <section id="history">
     <div class="container">
-        <div class="section-title">
+        <div class="section-heading">
             <h2>実績・経歴</h2>
-            <p>これまでの活動</p>
+            <p>これまでの取り組み</p>
         </div>
 
-        <div class="item-list">
-            <div class="item">
+        <div class="history-list">
+            <div class="history-item">
                 <h3>Minecraftサーバー運営</h3>
                 <p>サーバーの企画、管理、コミュニティ運営。</p>
             </div>
 
-            <div class="item">
+            <div class="history-item">
                 <h3>アドオン開発</h3>
-                <p>Script APIを使用した独自システムの制作。</p>
+                <p>Script APIを利用した独自システムの制作。</p>
             </div>
 
-            <div class="item">
+            <div class="history-item">
                 <h3>Webサイト制作</h3>
-                <p>サーバーや個人活動に関するWebサイトの制作。</p>
+                <p>サーバーや個人活動に関するWebページの制作。</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="links">
+<section id="links" class="links-section">
     <div class="container">
-        <div class="section-title">
+        <div class="section-heading">
             <h2>SNS・リンク</h2>
-            <p>関連ページ・各種アカウント</p>
+            <p>関連ページやアカウント</p>
         </div>
 
-        <div class="link-list">
-            <a href="#" onclick="return false;">YouTube（未設定）</a>
-            <a href="#" onclick="return false;">X（未設定）</a>
-            <a href="#" onclick="return false;">DOLDO SERVER（未設定）</a>
+        <div class="links">
+            <a class="disabled" href="#" onclick="return false;">YouTube（未設定） <span>↗</span></a>
+            <a class="disabled" href="#" onclick="return false;">X（未設定） <span>↗</span></a>
+            <a class="disabled" href="#" onclick="return false;">DOLDO SERVER（未設定） <span>↗</span></a>
         </div>
     </div>
 </section>
@@ -447,7 +676,10 @@ footer {
 </main>
 
 <footer>
-    © <span id="year"></span> DOLDO
+    <div class="container footer-inner">
+        <a href="#" class="logo">DOLDO<span>.</span></a>
+        <small>© <span id="year"></span> DOLDO</small>
+    </div>
 </footer>
 
 <script>
